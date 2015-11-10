@@ -50,10 +50,10 @@ class Router
   [:get, :post, :put, :delete].each do |http_method|
     define_method(http_method) do |pattern, controller_class, action_name|
       add_route(pattern, http_method, controller_class, action_name)
-      # Create path helper method. Generally not used for API resources
+      # Create path helper method
       matcher = Regexp.new("^(?<class>.+)Controller$")
       class_name = matcher.match(controller_class.to_s)['class'].downcase
-      RouteHelper.create_helper(action_name, class_name)
+      RouteHelper::create_helper(action_name, class_name)
     end
   end
 

@@ -1,10 +1,10 @@
-require_relative '../app/controllers/demo_controller'
+require_relative '../app/controllers/demos_controller'
 require_relative '../lib/router/router'
 
 class AllRoutes
   def run(router)
     router.draw do
-      get gen_rgx(".+"), DemoController, :index
+      get gen_rgx(""), DemosController, :index
     end
   end
 end
