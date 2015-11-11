@@ -21,7 +21,6 @@ class Route
 end
 
 class Router
-  include RouteHelper
   attr_reader :routes
 
   def initialize
@@ -53,7 +52,7 @@ class Router
       # Create path helper method
       matcher = Regexp.new("^(?<class>.+)Controller$")
       class_name = matcher.match(controller_class.to_s)['class'].downcase
-      RouteHelper::create_helper(action_name, class_name)
+      RouteHelper.create_helper(action_name, class_name)
     end
   end
 
